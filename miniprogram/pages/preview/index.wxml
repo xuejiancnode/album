@@ -1,0 +1,19 @@
+<view id="upLoadImage">
+  <view id="list" wx:if="{{images.length}}">
+    <view class="list-item" wx:for="{{images}}" style="" wx:item="item">
+      <view style="left: {{item.left}}px;opacity: {{item.opacity}}" class="content" bindtouchcancel="touchCancel" animation="mediaAnimation" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" bindlongpress="longpress" wx:if="{{item.fileType == 'image'}}" data-current="{{index}}" data-fileType="{{item.fileType}}" catchtap="previewImage">
+        <image data-current="{{index}}" data-fileType="{{item.fileType}}" src="{{item.url}}" mode="aspectFit"></image>
+      </view>
+      <view style="left: {{item.left}}px;opacity: {{item.opacity}}" class="content" bindtouchcancel="touchcancel" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" bindlongpress="longpress" wx:if="{{item.fileType == 'video'}}" data-current="{{index}}" data-fileType="{{item.fileType}}" catchtap="previewImage">
+        <video data-current="{{index}}" data-fileType="{{item.fileType}}" wx:if="{{item.url}}" src="{{item.url}}"></video>
+      </view>
+    </view>
+  </view>
+  <view class="empty-page" wx:if="{{images.length==0}}">
+    <image src="../../images/empty.png" mode="heightFix"></image>
+  </view>
+  <view class="change-preview">
+    <view class="pre" bindtap="changePreview" data-type="pre">上一张</view>
+    <view class="next" bindtap="changePreview" data-type="next">下一张</view>
+  </view>
+</view>

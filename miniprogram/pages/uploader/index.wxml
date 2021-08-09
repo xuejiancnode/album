@@ -1,0 +1,18 @@
+<!--miniprogram/pages/uploader/index.wxml-->
+<view id="uploader-image">
+  <view class="uploader-icon" bindtap="uploaderImage">
+    <image class="wait-uploader" src="../../images/uploader.jpeg"></image>
+    <view class="tips">
+      点我选择图片
+      <view class="arrow"></view>
+    </view>
+  </view>
+  <view class="uploader-icon" bindtap="previewImage" wx:for="{{uploaders}}" wx:item="{{item}}" wx:key="{{index}}">
+    <image class="wait-uploader" data-current="{{index}}" src="{{item.fileType == 'video' ? item.thumbTempFilePath : item.tempFilePath}}" data-fileType="{{item.fileType}}" mode="aspectFit"></image>
+    <image catchtap="removeImage" data-current="{{index}}" class="remove" src="../../images/remove.jpg"></image>
+  </view>
+
+</view>
+<view class="start-uploader" bindtap="startUploader">
+  开始上传
+</view>
